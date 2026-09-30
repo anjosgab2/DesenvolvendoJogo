@@ -3,11 +3,17 @@ package Super;
 public abstract class Personagem {
 
     private String nome;
+    private String classe;
     private double vida;
     private int vidaMaxima;
     private double dano;
     private double pontosDefesa;
     private double danoRecebido;
+
+    // SOBRESCRIÇÃO (POLIMORFISMO): Ataque único do Mago contra um objeto da classe Monstros
+
+    // SOBRESCRIÇÃO (POLIMORFISMO): Ataque único do Mago contra um objeto da classe Monstros
+    public abstract void atacar(Monstros alvo);
 
     public abstract void Atacar(Monstros alvo);
 
@@ -32,13 +38,13 @@ public abstract class Personagem {
     }
 
 
-    public Personagem(String nome, double vida, int vidaMaxima, double dano, double pontosDefesa) {
+    public Personagem(String nome, String classe, double vida, int vidaMaxima, double dano, double pontosDefesa) {
         this.nome = nome;
         this.vida = vida;
         this.vidaMaxima = vidaMaxima;
         this.dano = dano;
         this.pontosDefesa = pontosDefesa;
-
+        this.classe = String.valueOf(getClass());
     }
 
     public String getNome() {
@@ -48,6 +54,10 @@ public abstract class Personagem {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+    public String getClasse() {return classe; }
+
+    public void setClasse(String classe) {this.classe = classe;}
 
     public double getVida() {
         return vida;

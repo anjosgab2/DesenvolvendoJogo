@@ -1,15 +1,11 @@
 package Super;
 
-public class Monstros {
+public abstract class Monstros {
 
     private String raca;
     private int vidaMaxima;
     private double dano;
     private double vida;
-
-    public void Atacar(){
-
-    }
 
     public Monstros(String raca, int vidaMaxima, double dano, double vida) {
         this.raca = raca;
@@ -18,6 +14,27 @@ public class Monstros {
         this.vida = vida;
     }
 
+    // Método abstrato: obriga MonstroComum e Boss a criarem seu próprio ataque
+    // Recebe obrigatoriamente um Personagem como alvo
+    public abstract void atacar(Personagem alvo);
+
+    // Lógica para aplicar dano e atualizar a vida do monstro
+    public void receberDano(double danoRecebido) {
+        this.vida -= danoRecebido;
+
+        if (this.vida < 0) {
+            this.vida = 0;
+        }
+
+        IO.println(this.raca + " recebeu " + danoRecebido + " de dano! Vida restante: " + this.vida + "/" + this.vidaMaxima);
+    }
+
+    // Adaptação para o método getNome funcionar usando a raça
+    public String getNome() {
+        return this.raca;
+    }
+
+    // Getters e Setters
     public String getRaca() {
         return raca;
     }
